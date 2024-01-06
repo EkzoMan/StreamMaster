@@ -645,7 +645,7 @@ public class XmlTv2Mxf(ILogger<XmlTv2Mxf> logger, ILogger<EPGImportLogger> _epgI
         {
             int a = 1;
         }
-        if (xmltvProgramme.Titles.Any(a => a.Text.Contains("CBS News")))
+        if (xmltvProgramme.Titles.Any(a => a.Text is not null && a.Text.Contains("CBS News")))
         {
             int a = 1;
         }

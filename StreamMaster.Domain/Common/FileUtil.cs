@@ -493,14 +493,12 @@ public sealed class FileUtil
         }
     }
 
-    public static void Decompress(FileInfo fileToDecompress)
+    public static void Decompress(FileInfo fileToDecompress,string destinationFile)
     {
         using (FileStream originalFileStream = fileToDecompress.OpenRead())
         {
             string currentFileName = fileToDecompress.FullName;
-            string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
-
-            using (FileStream decompressedFileStream = File.Create(newFileName))
+            using (FileStream decompressedFileStream = File.Create(destinationFile))
             {
                 using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
                 {
